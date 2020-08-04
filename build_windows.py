@@ -59,6 +59,9 @@ for option in config['modules']:
 for option in compile_options['definitions']:
     defs += '/D' + option + ' '
 
+if not os.path.isdir('build/Windows'):
+    os.mkdir('build/Windows')
+
 # Fisrt we need to check if process library is present, if not we need to compile it
 if not os.path.exists('build/Subprocess.dll'):
     if not os.path.exists('build/Windows/Subprocess'):
@@ -72,9 +75,6 @@ if not os.path.exists('build/Subprocess.dll'):
     )
 
     copyfile('bin/Subprocess.dll', 'build/Subprocess.dll')
-
-if not os.path.isdir('build/Windows'):
-    os.mkdir('build/Windows')
 
 process = SubprocessWrapper.SubprocessWrapper()
 
