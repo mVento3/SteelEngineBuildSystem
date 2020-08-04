@@ -11,18 +11,24 @@ from shutil import copyfile
 
 start_time = time.time()
 
-def check_state_json(filename)
-    state_exists = os.path.isfile(filename)
-    file = open(filename)
+def check_state_json(filename):
+    if not os.path.isfile(filename):
+        file = open(filename, 'w')
 
-    if not state_exists: 
+        file.write('{\n}')
+        file.close()
+
+        file = open(filename)
+
         new_state = json.load(file)
+
+        file.close()
 
         new_state['filesHash'] = []
 
         return new_state
-    else
-        json.load(file)
+    
+    return json.load(open(filename))
 
 cwd = os.getcwd()
 config = json.load(open('bin/config.json'))
