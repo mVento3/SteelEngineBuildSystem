@@ -13,17 +13,7 @@ start_time = time.time()
 
 def check_state_json(filename):
     if not os.path.isfile(filename):
-        file = open(filename, 'w')
-
-        file.write('{\n}')
-        file.close()
-
-        file = open(filename)
-
-        new_state = json.load(file)
-
-        file.close()
-
+        new_state = {}
         new_state['filesHash'] = []
 
         return new_state
