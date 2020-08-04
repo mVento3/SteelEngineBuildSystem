@@ -73,6 +73,9 @@ if not os.path.exists('build/Subprocess.dll'):
 
     copyfile('bin/Subprocess.dll', 'build/Subprocess.dll')
 
+if not os.path.isdir('build/Windows'):
+    os.mkdir('build/Windows')
+
 process = SubprocessWrapper.SubprocessWrapper()
 
 process.Setup()
