@@ -107,7 +107,8 @@ for subdir, dirs, files in os.walk('src'):
         for module in modules:
             if module.name == splitted[1]:
                 for file in files:
-                    module.source_files.append(subdir + '\\' + file)
+                    if os.path.splitext(file)[1] == '.cpp':
+                        module.source_files.append(subdir + '\\' + file)
 
                 module.directory = subdir
 
