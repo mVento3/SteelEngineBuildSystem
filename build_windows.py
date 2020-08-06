@@ -83,7 +83,8 @@ for i in range(0, threads_count):
 
     processes.append(process_)
 
-subprocess.call(['bin/ReflectionGenerator.exe', '-cwd ' + cwd])
+if os.path.exists('bin/ReflectionGenerator.exe'):
+    subprocess.call(['bin/ReflectionGenerator.exe', '-cwd ' + cwd])
 
 for file in os.listdir('external'):
     if file.endswith('.json'):
